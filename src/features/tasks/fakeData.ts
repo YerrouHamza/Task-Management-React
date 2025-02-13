@@ -5,31 +5,26 @@ export const defaultTasks: Task[] = [
     {
         id: 1,
         todo: "Design Homepage UI",
-        status: "pending",
-        createdAt: new Date().toISOString(),
+        status: "pending"
     },
     {
         id: 2,
         todo: "Fix login bug",
-        status: "pending",
-        createdAt: new Date().toISOString(),
+        status: "pending"
     },
     {
         id: 3,
-        todo: "Write unit tests",
-        status: "completed",
-        createdAt: new Date().toISOString(),
+        todo: "lorme ipsum dolor sit amet lorme ipsum dolor sit amet lorme ipsum dolor sit amet lorme ipsum dolor sit amet lorme ipsum dolor sit amet lorme ipsum dolor sit amet lorme ipsum dolor sit amet lorme ipsum dolor sit amet",
+        status: "completed"
     },
     {
         id: 4,
         todo: "Update user profile page",
-        status: "pending",
-        createdAt: new Date().toISOString(),
+        status: "pending"
     },
     {
         id: 5,
         todo: "Optimize database queries",
-        status: "pending",
-        createdAt: new Date().toISOString(),
+        status: "pending"
     }
 ];

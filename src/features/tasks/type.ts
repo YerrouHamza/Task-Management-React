@@ -4,5 +4,4 @@ export type Task = {
   id: number;
   todo: string;
   status: TaskStatus;
-  createdAt: string;
 }
