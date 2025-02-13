@@ -1,9 +1,10 @@
 import MainLayout from "./layout/mainLayout";
+import { TaskTable } from "./features/tasks/TaskTable";
 
 function App() {
   return (
     <MainLayout>
-      <div>Tasks</div>
+      <TaskTable />
     </MainLayout>
   )
 }
