@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button"
+import MainLayout from "./layout/mainLayout";
 
 function App() {
   return (
-    <div>
-      <h1>React App</h1>
-      <Button>Click me</Button>
-    </div>
+    <MainLayout>
+      <div>Tasks</div>
+    </MainLayout>
   )
 }
 
