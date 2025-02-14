@@ -1,7 +1,7 @@
 
-import { Task } from "@/features/tasks/type";
+import { TaskType } from "@/features/tasks/types";
 
-export const defaultTasks: Task[] = [
+export const defaultTasks: TaskType[] = [
     {
         id: 1,
         todo: "Design Homepage UI",

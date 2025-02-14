@@ -5,3 +5,5 @@ export type TaskType = {
   todo: string;
   status: TaskStatus;
 }
+
+export type TaskStatusFilterType = 'all' | 'pending' | 'completed';

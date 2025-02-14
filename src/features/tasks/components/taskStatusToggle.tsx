@@ -1,7 +1,7 @@
 import { CheckboxField } from "@/components/checkboxField";
 import { TableCell } from "@/components/ui/table";
 import { useTasks } from "../store/useTasksStore";
-import { TaskType } from "../type";
+import { TaskType } from "../types";
 import { memo } from "react";
 
 export default memo(function TaskStatusToggle ({task}: {task: TaskType}) {

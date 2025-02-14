@@ -1,11 +1,14 @@
 import { memo } from 'react';
-import { FilterComponent, FilterType } from './filterComponent';
+
 import { Button } from '@/components/ui/button';
+
+import { FilterComponent } from './filterComponent';
+import { TaskStatusFilterType } from '../types';
 
 export default memo(function TaskTableAction({newTaskField, openNewTaskFild, setFilter}: {
     newTaskField: boolean,
     openNewTaskFild: (value: boolean) => void;
-    setFilter: (value: FilterType) => void
+    setFilter: (value: TaskStatusFilterType) => void
 }) {
     return (
       <div className="flex justify-end items-center gap-x-4">

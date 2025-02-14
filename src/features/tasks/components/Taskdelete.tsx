@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { TableCell } from "@/components/ui/table";
 import { useTasks } from "../store/useTasksStore";
-import { TaskType } from "../type";
+import { TaskType } from "../types";
 import { Trash2 } from "lucide-react";
 
 export default function TaskDelete({task}: {task: TaskType}) {

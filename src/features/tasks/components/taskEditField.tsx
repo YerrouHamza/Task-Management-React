@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 
 import { Input } from "@/components/ui/input";
-import { TaskType } from "../type";
+import { TaskType } from "../types";
 import { useTasks } from "../store/useTasksStore";
 
 const TaskEditField = ({task, setEditing}: {

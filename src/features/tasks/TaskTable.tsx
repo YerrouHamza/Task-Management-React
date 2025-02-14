@@ -4,11 +4,11 @@ import { useTasks } from "./store/useTasksStore";
 import TaskRow from "./components/TaskRow";
 import NewTaskField from "./components/newTaskField"
 import TaskTableAction from "./components/taskTableAction";
-import { FilterType } from "./components/filterComponent";
+import { TaskStatusFilterType } from "./types";
 
 function TaskTable() {
   const { tasks } = useTasks();
-  const [filter, setFilter] = useState<FilterType>("all");
+  const [filter, setFilter] = useState<TaskStatusFilterType>("all");
   const [newTask, setNewTask] = useState(false);
 
   const filteredTasks = useMemo(() => {

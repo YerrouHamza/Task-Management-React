@@ -3,7 +3,7 @@ import { memo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { TableCell, TableRow } from "@/components/ui/table";
 
-import { TaskType } from "../type";
+import { TaskType } from "../types";
 import TaskStatusToggle from "./taskStatusToggle";
 import TaskDelete from "./Taskdelete";
 import TaskEditField from "./taskEditField";

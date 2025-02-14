@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TaskType } from "../type";
+import { TaskType } from "../types";
 import { defaultTasks } from "../fakeData";
 
 interface TaskState {

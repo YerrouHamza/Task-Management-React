@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
-export type FilterType = 'all' | 'pending' | 'completed';
+import { TaskStatusFilterType } from "../types";
 
 interface FilterComponentProps {
-    onFilterChange: (status: FilterType) => void;
+    onFilterChange: (status: TaskStatusFilterType) => void;
 }
 
-const Filters: FilterType[] = ['all', 'pending', 'completed'];
+const Filters: TaskStatusFilterType[] = ['all', 'pending', 'completed'];
 
 export function FilterComponent({ onFilterChange }: FilterComponentProps) {
   const [filter, setFilter] = useState("all");
 
-  const handleChange = (value: FilterType) => {
+  const handleChange = (value: TaskStatusFilterType) => {
     setFilter(value)
     onFilterChange(value)
   }
