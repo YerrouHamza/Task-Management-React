@@ -10,7 +10,7 @@ import TaskEditField from "./taskEditField";
 
 type TaskRowProps = TaskType
 
-function TaskRow({ id, status, todo }: TaskRowProps) {
+export default memo(function TaskRow({ id, status, todo }: TaskRowProps) {
   const [editing, setEditing] = useState(false);
 
   return (
@@ -31,7 +31,5 @@ function TaskRow({ id, status, todo }: TaskRowProps) {
       <TaskDelete id={id} todo={todo} />
     </TableRow>
   );
-}
-
-export default memo(TaskRow)
+})
 

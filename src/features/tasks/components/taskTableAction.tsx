@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Button } from '@/components/ui/button';
 
-import { FilterComponent } from './filterComponent';
+import FilterComponent from './filterComponent';
 import { TaskStatusFilterType } from '../types';
 
 type TaskTableActionPorps = {

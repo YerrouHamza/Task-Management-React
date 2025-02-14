@@ -47,7 +47,7 @@ function TaskTable() {
   );
 }
 
-const TaskTableHeader = () => {
+const TaskTableHeader = memo(() => {
   return (
     <TableHeader aria-label="Task table header">
       <TableRow>
@@ -56,6 +56,6 @@ const TaskTableHeader = () => {
       </TableRow>
     </TableHeader>
   );
-}
+})
 
 export default memo(TaskTable);

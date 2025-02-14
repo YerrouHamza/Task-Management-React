@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { TaskStatusFilterType } from "../types";
 
@@ -8,7 +9,7 @@ interface FilterComponentProps {
 
 const Filters: TaskStatusFilterType[] = ['all', 'pending', 'completed'];
 
-export function FilterComponent({ filter = 'all', onFilterChange }: FilterComponentProps) {
+export default memo(function FilterComponent({ filter = 'all', onFilterChange }: FilterComponentProps) {
   return (
     <Select value={filter} onValueChange={(value: TaskStatusFilterType) => onFilterChange(value)}>
         <SelectTrigger
@@ -31,4 +32,4 @@ export function FilterComponent({ filter = 'all', onFilterChange }: FilterCompon
         </SelectContent>
     </Select>
   );
-}
+})
