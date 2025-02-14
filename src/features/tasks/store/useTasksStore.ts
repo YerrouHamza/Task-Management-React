@@ -8,6 +8,7 @@ interface TaskState {
   updateTask: (id: number, updatedTask: Partial<TaskType>) => void;
   toggleTaskStatus: (id: number) => void;
   deleteTask: (id: number) => void;
+  moveTask: (dragIndex: number, hoverIndex: number) => void;
 }
 
 export const useTasks = create<TaskState>((set) => ({
@@ -55,4 +56,15 @@ export const useTasks = create<TaskState>((set) => ({
 
       return { tasks: newTasks };
     }),
+
+    moveTask: (dragIndex, hoverIndex) =>
+      set((state) => {
+        if (dragIndex === hoverIndex) return {};
+    
+        const newTasks = [...state.tasks];
+        const [movedTask] = newTasks.splice(dragIndex, 1);
+        newTasks.splice(hoverIndex, 0, movedTask);
+    
+        return { tasks: newTasks };
+      }),
 }));

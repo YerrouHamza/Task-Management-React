@@ -18,7 +18,7 @@ export default function NewTaskField({closeNewTaskTab}: {closeNewTaskTab: (value
     
     return (
       <>
-        <TableCell colSpan={2} className="p-2">
+        <TableCell colSpan={3} className="p-2">
           <Textarea
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}

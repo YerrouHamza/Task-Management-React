@@ -1,35 +1,55 @@
-import { memo, useState } from "react";
+import { memo, useRef } from "react";
+import { useDrag, useDrop } from "react-dnd";
 
+import { TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { TableCell, TableRow } from "@/components/ui/table";
 
+import TaskRowBody from "./taskRowBody";
+import { useTasks } from "../store/useTasksStore";
 import { TaskType } from "../types";
-import TaskStatusToggle from "./taskStatusToggle";
-import TaskDelete from "./Taskdelete";
-import TaskEditField from "./taskEditField";
 
-type TaskRowProps = TaskType
+const ITEM_TYPE = "TASK";
+type TaskRowProps = TaskType & { index: number };
 
-export default memo(function TaskRow({ id, status, todo }: TaskRowProps) {
-  const [editing, setEditing] = useState(false);
+function TaskRow({ id, status, todo, index }: TaskRowProps) {
+  const moveTask = useTasks((state) => state.moveTask);
+  const ref = useRef<HTMLTableRowElement>(null);
+
+  const [, drop] = useDrop({
+    accept: ITEM_TYPE,
+    hover: (draggedItem: { index: number }) => {
+      if (draggedItem.index !== index) {
+        moveTask(draggedItem.index, index);
+        draggedItem.index = index;
+      }
+    },
+  });
+
+  const [{ isDragging }, drag] = useDrag({
+    type: ITEM_TYPE,
+    item: { id, index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  drag(drop(ref));
 
   return (
-    <TableRow className={cn(status === 'completed' && 'bg-green-50 hover:bg-green-100')}>
-      <TableCell
-        tabIndex={0}
-        colSpan={2} 
-        className="hover:underline hover:cursor-pointer min-w-[80%] xl:min-w-[800px] max-w-[800px] p-0.5"
-        onClick={() => setEditing(true)}
-        onFocus={() => setEditing(true)}
-      >
-        {editing 
-          ? <TaskEditField id={id} todo={todo} setEditing={setEditing} />
-          : <div className="px-4 py-3">{todo}</div>
-        }
-      </TableCell>
-      <TaskStatusToggle id={id} status={status} todo={todo} />
-      <TaskDelete id={id} todo={todo} />
+    <TableRow
+      ref={ref}
+      className={cn(
+        "transition-colors cursor-grab",
+        status === "completed" && "bg-green-50 hover:bg-green-100",
+        isDragging && "opacity-50"
+      )}
+    >
+      <TaskRowBody id={id} todo={todo} status={status} />
     </TableRow>
   );
-})
+};
 
+
+
+
+export default memo(TaskRow);
