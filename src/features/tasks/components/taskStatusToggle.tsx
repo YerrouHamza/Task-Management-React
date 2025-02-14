@@ -4,17 +4,19 @@ import { useTasks } from "../store/useTasksStore";
 import { TaskType } from "../types";
 import { memo } from "react";
 
-export default memo(function TaskStatusToggle ({task}: {task: TaskType}) {
+type TaskStatusToggleType = TaskType
+
+export default memo(function TaskStatusToggle ({id, status, todo}: TaskStatusToggleType) {
     const { toggleTaskStatus } = useTasks();
   
     return (
       <TableCell colSpan={1}>
         <CheckboxField 
-          id={task.id.toLocaleString()}
-          label={task.status}
-          aria-label={`Mark task ${task.todo} as ${task.status === "completed" ? "incomplete" : "completed"}`}
-          defaultChecked={task.status === "completed"}
-          onCheckedChange={() => toggleTaskStatus(task.id)}
+          id={id.toString()}
+          label={status}
+          aria-label={`Mark task ${todo} as ${status === "completed" ? "incomplete" : "completed"}`}
+          defaultChecked={status === "completed"}
+          onCheckedChange={() => toggleTaskStatus(id)}
         />
       </TableCell>
     )

@@ -8,16 +8,13 @@ import TaskStatusToggle from "./taskStatusToggle";
 import TaskDelete from "./Taskdelete";
 import TaskEditField from "./taskEditField";
 
+type TaskRowProps = TaskType
 
-interface TaskRowProps {
-  task: TaskType;
-}
-
-function TaskRow({ task }: TaskRowProps) {
+function TaskRow({ id, status, todo }: TaskRowProps) {
   const [editing, setEditing] = useState(false);
 
   return (
-    <TableRow className={cn(task.status === 'completed' && 'bg-green-50 hover:bg-green-100')}>
+    <TableRow className={cn(status === 'completed' && 'bg-green-50 hover:bg-green-100')}>
       <TableCell 
         tabIndex={0}
         colSpan={2} 
@@ -26,12 +23,12 @@ function TaskRow({ task }: TaskRowProps) {
         onFocus={() => setEditing(true)}
       >
         {editing 
-          ? <TaskEditField task={task} setEditing={setEditing}/> 
-          : <span>{task.todo}</span>
+          ? <TaskEditField id={id} todo={todo} setEditing={setEditing} />
+          : <span>{todo}</span>
         }
       </TableCell>
-      <TaskStatusToggle task={task} />
-      <TaskDelete task={task} />
+      <TaskStatusToggle id={id} status={status} todo={todo} />
+      <TaskDelete id={id} todo={todo} />
     </TableRow>
   );
 }

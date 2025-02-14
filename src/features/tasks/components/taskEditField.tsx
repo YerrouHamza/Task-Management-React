@@ -4,27 +4,28 @@ import { Input } from "@/components/ui/input";
 import { TaskType } from "../types";
 import { useTasks } from "../store/useTasksStore";
 
-const TaskEditField = ({task, setEditing}: {
-    task: TaskType,
-    setEditing: (value: boolean) => void
-  }) => {
-    const [todo, setTodo] = useState(task.todo);
+interface TaskEditProp extends Pick<TaskType, 'id' | 'todo'> {
+  setEditing: (value: boolean) => void
+}
+
+const TaskEditField = ({id, todo, setEditing}: TaskEditProp) => {
+    const [value, setValue] = useState(todo);
     const { updateTask } = useTasks();
   
     const handleUpdateTask = () => {
-      updateTask(task.id, { todo });
+      updateTask(id, { todo: value });
       setEditing(false);
     }
   
     return (
       <Input
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         onBlur={() => handleUpdateTask()}
         onKeyDown={(e) => {
           if (e.key === "Enter") handleUpdateTask()
         }}
-        aria-label={`Update the task ${task.todo}`}
+        aria-label={`Update the task ${todo}`}
         autoFocus
       />
     )

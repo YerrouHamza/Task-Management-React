@@ -8,7 +8,6 @@ export default function NewTaskField({closeNewTaskTab}: {closeNewTaskTab: (value
     const { addTask } = useTasks()
     const [newTask, setNewTask] = useState("");
 
-
     const handleAddTask = () => {
       if(newTask.trim() !== "") {
         addTask({todo: newTask, status: 'pending'})
@@ -36,7 +35,7 @@ export default function NewTaskField({closeNewTaskTab}: {closeNewTaskTab: (value
         <TableCell>
           <Button
             className="w-full"
-            onClick={() => handleAddTask()}
+            onClick={handleAddTask}
             aria-label="Add Task"
           >Add</Button>
         </TableCell>

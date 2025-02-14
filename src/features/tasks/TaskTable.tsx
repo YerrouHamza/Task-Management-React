@@ -1,7 +1,7 @@
 import { memo, useMemo, useState } from "react";
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useTasks } from "./store/useTasksStore";
-import TaskRow from "./components/TaskRow";
+import TaskRow from "./components/taskRow";
 import NewTaskField from "./components/newTaskField"
 import TaskTableAction from "./components/taskTableAction";
 import { TaskStatusFilterType } from "./types";
@@ -29,7 +29,7 @@ function TaskTable() {
         <TaskTableHeader />
         <TableBody>
           {filteredTasks.map((task) => (
-            <TaskRow key={task.id} task={task} />
+            <TaskRow key={task.id} {...task} />
           ))}
 
           <TableRow
