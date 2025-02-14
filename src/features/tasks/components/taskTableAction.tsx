@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { FilterComponent, FilterType } from './filterComponent';
 import { Button } from '@/components/ui/button';
 
-export default function TaskTableAction({newTaskField, setOpenNewTaskFild, setFilter}: {
+export default memo(function TaskTableAction({newTaskField, openNewTaskFild, setFilter}: {
     newTaskField: boolean,
-    setOpenNewTaskFild: (value: boolean) => void;
+    openNewTaskFild: (value: boolean) => void;
     setFilter: (value: FilterType) => void
 }) {
     return (
@@ -12,10 +13,11 @@ export default function TaskTableAction({newTaskField, setOpenNewTaskFild, setFi
         <Button
           size='sm'
           variant={!newTaskField ? 'default' : 'outline'}
-          onClick={() => setOpenNewTaskFild(!newTaskField)}
+          onClick={() => openNewTaskFild(!newTaskField)}
+          aria-label='Open add new task field'
         >
           {!newTaskField ? <span>New Task</span> : <span>Close Task</span>}
         </Button>
       </div>
     )
-}
+})

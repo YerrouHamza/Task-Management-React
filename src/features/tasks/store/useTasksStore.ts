@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { Task } from "../type";
+import { TaskType } from "../type";
 import { defaultTasks } from "../fakeData";
 
 interface TaskState {
-  tasks: Task[];
-  addTask: (task: Omit<Task, "id">) => void;
-  updateTask: (id: number, updatedTask: Partial<Task>) => void;
+  tasks: TaskType[];
+  addTask: (task: Omit<TaskType, "id">) => void;
+  updateTask: (id: number, updatedTask: Partial<TaskType>) => void;
   toggleTaskStatus: (id: number) => void;
   deleteTask: (id: number) => void;
 }
@@ -15,7 +15,7 @@ export const useTasks = create<TaskState>((set) => ({
 
   addTask: (task) =>
     set((state) => {
-      const newTask: Task = {
+      const newTask: TaskType = {
         id: state.tasks.length + 1,
         ...task,
       };
@@ -35,7 +35,7 @@ export const useTasks = create<TaskState>((set) => ({
     set((state) => {
       const updatedTasks = state.tasks.map((task) =>
         task.id === id
-          ? { ...task, status: task.status === "completed" ? "pending" : "completed" as Task["status"] }
+          ? { ...task, status: task.status === "completed" ? "pending" : "completed" as TaskType["status"] }
           : task
       );
       return { tasks: updatedTasks };

@@ -4,7 +4,7 @@ import { useTasks } from "../store/useTasksStore";
 import { TaskType } from "../type";
 import { Trash2 } from "lucide-react";
 
-export default function TaskDelete({taskId}: {taskId: TaskType["id"]}) {
+export default function TaskDelete({task}: {task: TaskType}) {
     const {deleteTask} = useTasks();
   
     return (
@@ -12,7 +12,8 @@ export default function TaskDelete({taskId}: {taskId: TaskType["id"]}) {
         <Button
           variant="destructive"
           size="icon"
-          onClick={() => deleteTask(taskId)}
+          aria-label={`Delete the task ${task.todo}`}
+          onClick={() => deleteTask(task.id)}
         >
           <Trash2 /> 
         </Button>

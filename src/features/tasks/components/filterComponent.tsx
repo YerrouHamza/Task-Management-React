@@ -12,14 +12,27 @@ const Filters: FilterType[] = ['all', 'pending', 'completed'];
 export function FilterComponent({ onFilterChange }: FilterComponentProps) {
   const [filter, setFilter] = useState("all");
 
+  const handleChange = (value: FilterType) => {
+    setFilter(value)
+    onFilterChange(value)
+  }
+
   return (
-    <Select value={filter} onValueChange={(value: FilterType) => { setFilter(value); onFilterChange(value); }}>
-        <SelectTrigger className="w-40">
+    <Select value={filter} onValueChange={handleChange}>
+        <SelectTrigger
+            className="w-40 capitalize" 
+            aria-label="Filter tasks by status"
+        >
             <SelectValue placeholder="Filter Tasks" />
         </SelectTrigger>
         <SelectContent>
             {Filters.map((item) => (
-                <SelectItem key={item} value={item} className="capitalize">
+                <SelectItem 
+                    key={item}
+                    value={item}
+                    className="capitalize"
+                    aria-label={`Show ${item} tasks`}
+                >
                     {item}
                 </SelectItem>
             ))}

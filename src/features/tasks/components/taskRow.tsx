@@ -2,12 +2,11 @@ import { memo, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { TableCell, TableRow } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import { useTasks } from "../store/useTasksStore";
 
 import { TaskType } from "../type";
 import TaskStatusToggle from "./taskStatusToggle";
 import TaskDelete from "./Taskdelete";
+import TaskEditField from "./taskEditField";
 
 
 interface TaskRowProps {
@@ -31,36 +30,10 @@ function TaskRow({ task }: TaskRowProps) {
           : <span>{task.todo}</span>
         }
       </TableCell>
-      <TaskStatusToggle taskId={task.id} status={task.status} />
-      <TaskDelete taskId={task.id} />
+      <TaskStatusToggle task={task} />
+      <TaskDelete task={task} />
     </TableRow>
   );
-}
-
-
-const TaskEditField = ({task, setEditing}: {
-  task: TaskType,
-  setEditing: (value: boolean) => void
-}) => {
-  const [todo, setTodo] = useState(task.todo);
-  const { updateTask } = useTasks();
-
-  const handleUpdateTask = () => {
-    updateTask(task.id, { todo });
-    setEditing(false);
-  }
-
-  return (
-    <Input
-      value={todo}
-      onChange={(e) => setTodo(e.target.value)}
-      onBlur={() => handleUpdateTask()}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") handleUpdateTask()
-      }}
-      autoFocus
-    />
-  )
 }
 
 export default memo(TaskRow)
