@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { useTasks } from "../store/useTasksStore";
 
-import { Task } from "../type";
-import StatusToggleTask from "./statusToggleTask";
-import DeleteTask from "./deleteTask";
+import { TaskType } from "../type";
+import TaskStatusToggle from "./taskStatusToggle";
+import TaskDelete from "./Taskdelete";
 
 
 interface TaskRowProps {
-  task: Task;
+  task: TaskType;
 }
 
-export function TaskRow({ task }: TaskRowProps) {
+function TaskRow({ task }: TaskRowProps) {
   const [editing, setEditing] = useState(false);
 
   return (
@@ -31,15 +31,15 @@ export function TaskRow({ task }: TaskRowProps) {
           : <span>{task.todo}</span>
         }
       </TableCell>
-      <StatusToggleTask taskId={task.id} status={task.status} />
-      <DeleteTask taskId={task.id} />
+      <TaskStatusToggle taskId={task.id} status={task.status} />
+      <TaskDelete taskId={task.id} />
     </TableRow>
   );
 }
 
 
 const TaskEditField = ({task, setEditing}: {
-  task: Task,
+  task: TaskType,
   setEditing: (value: boolean) => void
 }) => {
   const [todo, setTodo] = useState(task.todo);
@@ -62,4 +62,6 @@ const TaskEditField = ({task, setEditing}: {
     />
   )
 }
+
+export default memo(TaskRow)
 

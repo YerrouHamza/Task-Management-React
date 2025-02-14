@@ -1,11 +1,12 @@
 import { CheckboxField } from "@/components/checkboxField";
 import { TableCell } from "@/components/ui/table";
 import { useTasks } from "../store/useTasksStore";
-import { Task } from "../type";
+import { TaskType } from "../type";
+import { memo } from "react";
 
-export default function StatusToggleTask ({taskId, status}: {
-    taskId: Task["id"],
-    status: Task["status"]
+export default memo(function TaskStatusToggle ({taskId, status}: {
+    taskId: TaskType["id"],
+    status: TaskType["status"]
   }) {
     const { toggleTaskStatus } = useTasks();
   
@@ -19,4 +20,4 @@ export default function StatusToggleTask ({taskId, status}: {
         />
       </TableCell>
     )
-}
+})

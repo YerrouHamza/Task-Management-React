@@ -1,6 +1,6 @@
 export type TaskStatus = "pending" | "completed";
 
-export type Task = {
+export type TaskType = {
   id: number;
   todo: string;
   status: TaskStatus;

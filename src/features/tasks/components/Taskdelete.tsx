@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { TableCell } from "@/components/ui/table";
 import { useTasks } from "../store/useTasksStore";
-import { Task } from "../type";
+import { TaskType } from "../type";
 import { Trash2 } from "lucide-react";
 
-export default function DeleteTask({taskId}: {taskId: Task["id"]}) {
+export default function TaskDelete({taskId}: {taskId: TaskType["id"]}) {
     const {deleteTask} = useTasks();
   
     return (
