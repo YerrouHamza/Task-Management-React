@@ -18,6 +18,7 @@ function TaskTable() {
   return (
     <div className="space-y-3">
       <TaskTableAction 
+        filter={filter}
         setFilter={setFilter}
         newTaskField={newTask}
         openNewTaskFild={setNewTask}

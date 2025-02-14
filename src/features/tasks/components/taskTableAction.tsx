@@ -5,14 +5,17 @@ import { Button } from '@/components/ui/button';
 import { FilterComponent } from './filterComponent';
 import { TaskStatusFilterType } from '../types';
 
-export default memo(function TaskTableAction({newTaskField, openNewTaskFild, setFilter}: {
-    newTaskField: boolean,
-    openNewTaskFild: (value: boolean) => void;
-    setFilter: (value: TaskStatusFilterType) => void
-}) {
+type TaskTableActionPorps = {
+  filter: TaskStatusFilterType
+  newTaskField: boolean,
+  openNewTaskFild: (value: boolean) => void;
+  setFilter: (value: TaskStatusFilterType) => void
+}
+
+export default memo(function TaskTableAction({filter, newTaskField, openNewTaskFild, setFilter}: TaskTableActionPorps) {
     return (
       <div className="flex justify-end items-center gap-x-4">
-        <FilterComponent onFilterChange={setFilter} />
+        <FilterComponent filter={filter} onFilterChange={setFilter} />
         <Button
           size='sm'
           variant={!newTaskField ? 'default' : 'outline'}
