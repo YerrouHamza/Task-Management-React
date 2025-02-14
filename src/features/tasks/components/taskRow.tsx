@@ -20,9 +20,11 @@ export function TaskRow({ task }: TaskRowProps) {
   return (
     <TableRow className={cn(task.status === 'completed' && 'bg-green-50 hover:bg-green-100')}>
       <TableCell 
+        tabIndex={0}
         colSpan={2} 
         className="hover:underline hover:cursor-pointer"
         onClick={() => setEditing(true)}
+        onFocus={() => setEditing(true)}
       >
         {editing 
           ? <TaskEditField task={task} setEditing={setEditing}/> 
@@ -54,7 +56,7 @@ const TaskEditField = ({task, setEditing}: {
       onChange={(e) => setTodo(e.target.value)}
       onBlur={() => handleUpdateTask()}
       onKeyDown={(e) => {
-        if (e.key === "Enter") handleUpdateTask
+        if (e.key === "Enter") handleUpdateTask()
       }}
       autoFocus
     />

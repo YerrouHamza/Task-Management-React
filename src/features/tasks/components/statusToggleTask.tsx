@@ -14,7 +14,7 @@ export default function StatusToggleTask ({taskId, status}: {
         <CheckboxField 
           id={taskId.toLocaleString()}
           label={status}
-          defaultChecked={status === "completed"} 
+          defaultChecked={status === "completed"}
           onCheckedChange={() => toggleTaskStatus(taskId)}
         />
       </TableCell>

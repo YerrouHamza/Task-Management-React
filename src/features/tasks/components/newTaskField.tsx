@@ -4,9 +4,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { useState } from "react";
 import { useTasks } from "../store/useTasksStore";
 
-export default function NewTaskRow({closeNewTaskTab}: {
-  closeNewTaskTab: (value: boolean) => void
-}) {
+export default function NewTaskField({closeNewTaskTab}: {closeNewTaskTab: (value: boolean) => void;}) {
     const { addTask } = useTasks()
     const [newTask, setNewTask] = useState("");
 
@@ -20,9 +18,10 @@ export default function NewTaskRow({closeNewTaskTab}: {
     }
     
     return (
-      <TableRow className="bg-white">
+      <>
         <TableCell colSpan={3}>
           <Input
+            autoFocus
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             onKeyDown={(e) => {
@@ -39,6 +38,6 @@ export default function NewTaskRow({closeNewTaskTab}: {
             onClick={() => handleAddTask()}
           >Add</Button>
         </TableCell>
-      </TableRow>
+      </>
     );
   }

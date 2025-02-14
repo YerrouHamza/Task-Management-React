@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 import { useTasks } from "./store/useTasksStore";
 import { TaskRow } from "./components/TaskRow";
-import NewTaskRow from "./components/newTaskRow";
+import NewTaskField from "./components/newTaskField"
 
 export function TaskTable() {
   const { tasks } = useTasks();
@@ -34,7 +34,9 @@ export function TaskTable() {
             <TaskRow key={task.id} task={task} />
           ))}
 
-          {newTask ? <NewTaskRow closeNewTaskTab={setNewTask} /> : null}
+          <TableRow className='bg-white' tabIndex={0} onFocus={() => setNewTask(true)}>
+            {newTask ? <NewTaskField closeNewTaskTab={setNewTask} /> : null}
+          </TableRow>
         </TableBody>
       </Table>
     </div>
