@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { TableCell } from "@/components/ui/table";
 import { useState } from "react";
 import { useTasks } from "../store/useTasksStore";
@@ -18,8 +18,8 @@ export default function NewTaskField({closeNewTaskTab}: {closeNewTaskTab: (value
     
     return (
       <>
-        <TableCell colSpan={3}>
-          <Input
+        <TableCell colSpan={2} className="p-2">
+          <Textarea
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             onKeyDown={(e) => {
@@ -32,7 +32,7 @@ export default function NewTaskField({closeNewTaskTab}: {closeNewTaskTab: (value
             autoFocus
           />
         </TableCell>
-        <TableCell>
+        <TableCell colSpan={2}>
           <Button
             className="w-full"
             onClick={handleAddTask}

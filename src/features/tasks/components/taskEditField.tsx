@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { TaskType } from "../types";
 import { useTasks } from "../store/useTasksStore";
 
@@ -18,7 +18,7 @@ const TaskEditField = ({id, todo, setEditing}: TaskEditProp) => {
     }
   
     return (
-      <Input
+      <Textarea
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onBlur={() => handleUpdateTask()}

@@ -10,7 +10,7 @@ export default memo(function TaskStatusToggle({ id, status, todo }: TaskStatusTo
   const toggleTaskStatus = useTasks((state) => state.toggleTaskStatus);
 
   return (
-    <TableCell colSpan={1}>
+    <TableCell colSpan={1} className="min-w-[115px]">
       <CheckboxField 
         id={id.toString()}
         label={status}

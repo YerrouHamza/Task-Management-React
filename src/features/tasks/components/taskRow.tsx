@@ -15,16 +15,16 @@ export default memo(function TaskRow({ id, status, todo }: TaskRowProps) {
 
   return (
     <TableRow className={cn(status === 'completed' && 'bg-green-50 hover:bg-green-100')}>
-      <TableCell 
+      <TableCell
         tabIndex={0}
         colSpan={2} 
-        className="hover:underline hover:cursor-pointer"
+        className="hover:underline hover:cursor-pointer min-w-[80%] xl:min-w-[800px] max-w-[800px] p-0.5"
         onClick={() => setEditing(true)}
         onFocus={() => setEditing(true)}
       >
         {editing 
           ? <TaskEditField id={id} todo={todo} setEditing={setEditing} />
-          : <span>{todo}</span>
+          : <div className="px-4 py-3">{todo}</div>
         }
       </TableCell>
       <TaskStatusToggle id={id} status={status} todo={todo} />

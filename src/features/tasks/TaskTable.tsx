@@ -23,7 +23,7 @@ function TaskTable() {
         newTaskField={newTask}
         openNewTaskFild={setNewTask}
       />
-      <Table aria-label="Task management table">
+      <Table className="min-w-[500px]" aria-label="Task management table">
         <TableCaption className="sr-only">
           Task table displaying tasks with status and actions.
         </TableCaption>
