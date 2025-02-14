@@ -15,35 +15,44 @@ export const useTasks = create<TaskState>((set) => ({
 
   addTask: (task) =>
     set((state) => {
-      const newTask: TaskType = {
-        id: state.tasks.length + 1,
-        ...task,
-      };
+      const newTask: TaskType = {id: state.tasks.length + 1, ...task};
       const updatedTasks = [...state.tasks, newTask];
+
       return { tasks: updatedTasks };
     }),
 
-  updateTask: (id, updatedTask) =>
+  updateTask: (id, task) =>
     set((state) => {
-      const updatedTasks = state.tasks.map((task) =>
-        task.id === id ? { ...task, ...updatedTask } : task
-      );
-      return { tasks: updatedTasks };
+      const targetIndex = state.tasks.findIndex((item) => item.id === id);
+      const targetTask = state.tasks[targetIndex];
+      
+      const updatedTask = {...targetTask, ...task};
+
+      const newTask = [...state.tasks]
+      newTask.splice(targetIndex, 1, updatedTask);
+
+      return { tasks: newTask};
     }),
 
   toggleTaskStatus: (id) =>
     set((state) => {
-      const updatedTasks = state.tasks.map((task) =>
-        task.id === id
-          ? { ...task, status: task.status === "completed" ? "pending" : "completed" as TaskType["status"] }
-          : task
-      );
-      return { tasks: updatedTasks };
+      const targetIndex = state.tasks.findIndex((item) => item.id === id);
+      const targetTask = state.tasks[targetIndex]
+      
+      targetTask.status = targetTask.status === "completed" ? "pending" : "completed" as TaskType["status"];
+
+      const newTasks = [...state.tasks]
+      newTasks.splice(targetIndex, 1, targetTask)
+
+      return { tasks: newTasks };
     }),
 
   deleteTask: (id) =>
     set((state) => {
-      const updatedTasks = state.tasks.filter((task) => task.id !== id);
-      return { tasks: updatedTasks };
+      const targetIndex = state.tasks.findIndex((item) => item.id === id);
+      const newTasks = [...state.tasks]
+      newTasks.splice(targetIndex, 1)
+
+      return { tasks: newTasks };
     }),
 }));
