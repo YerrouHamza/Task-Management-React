@@ -4,7 +4,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { useState } from "react";
 import { useTasks } from "../store/useTasksStore";
 
-export default function NewTaskInput({closeNewTaskTab}: {
+export default function NewTaskRow({closeNewTaskTab}: {
   closeNewTaskTab: (value: boolean) => void
 }) {
     const { addTask } = useTasks()

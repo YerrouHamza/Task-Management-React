@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 import { useTasks } from "./store/useTasksStore";
 import { TaskRow } from "./components/TaskRow";
-import NewTaskInput from "./components/NewTaskInput";
+import NewTaskRow from "./components/newTaskRow";
 
 export function TaskTable() {
   const { tasks } = useTasks();
@@ -34,7 +34,7 @@ export function TaskTable() {
             <TaskRow key={task.id} task={task} />
           ))}
 
-          {newTask ? <NewTaskInput closeNewTaskTab={setNewTask} /> : null}
+          {newTask ? <NewTaskRow closeNewTaskTab={setNewTask} /> : null}
         </TableBody>
       </Table>
     </div>
