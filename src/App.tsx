@@ -1,5 +1,5 @@
 import MainLayout from "./layout/mainLayout";
-import { TaskTable } from "./features/tasks/TaskTable";
+import TaskTable from "./features/tasks/TaskTable";
 
 function App() {
   return (
