@@ -1,50 +1,67 @@
-# React + TypeScript + Vite
+# Task Management App - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Task Management App allows users to effectively manage their tasks with several advanced features. Built with React, TypeScript, Zustand for state management, and styled using Tailwind CSS and ShadCN for modern, responsive design, the app provides an intuitive interface for adding, editing, marking tasks as completed, and more.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### [Live Demo](https://task-management-react-iota.vercel.app/) 🚀
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Easily add tasks by typing in a new row at the bottom.**
 
-- Configure the top-level `parserOptions` property like this:
+- **Click on a task to edit it directly, allowing quick updates without switching views.**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Navigate between fields using the Tab key. You can edit tasks, check/uncheck the status, or delete tasks while navigating. A new row is automatically created when reaching the last field.**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Mark tasks as completed with a checkbox, visually distinguishing them from pending tasks.**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Filter tasks by status: All, Completed, or Pending.**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Drag-and-Drop Task Reordering**
+
+- **Optimized with memoization to improve speed and responsiveness.**
+
+- **Designed with accessibility in mind, including keyboard navigation and support for assistive technologies.**
+
+## Installation
+
+To get a local copy up and running follow these simple steps.
+
+1. **Clone the repository**:
+
+   ```sh
+   git clone https://github.com/YerrouHamza/Task-Management-React.git
+   ```
+
+2. **Navigate to the project folder**:
+   ```bash
+   cd Task-Management-React
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+Instructions on how to run or use the project.
+
+- **Development server**:
+  ```bash
+  npm run dev
+  ```
+- **Build for production**:
+
+  ```bash
+  npm run build
+  ```
+
+- **Formatting**:
+  ```bash
+   npm run format
+  ```
+
+## Author
+
+### [👤 **Yerrou Hamza**](https://www.hamzayerrou.com)
