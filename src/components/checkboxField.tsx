@@ -1,4 +1,4 @@
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface CheckboxFieldProps {
   id: string;
@@ -7,15 +7,20 @@ interface CheckboxFieldProps {
   onCheckedChange?: (value: boolean) => void;
 }
 
-export function CheckboxField({ id, label, defaultChecked = false, onCheckedChange }: CheckboxFieldProps) {
+export function CheckboxField({
+  id,
+  label,
+  defaultChecked = false,
+  onCheckedChange,
+}: CheckboxFieldProps) {
   return (
-    <div 
+    <div
       className="items-top flex space-x-2 cursor-pointer"
       onKeyDown={(e) => {
-        if (e.key === "Enter") onCheckedChange?.(!defaultChecked);
+        if (e.key === 'Enter') onCheckedChange?.(!defaultChecked);
       }}
     >
-      <Checkbox 
+      <Checkbox
         id={id}
         checked={defaultChecked}
         onCheckedChange={onCheckedChange}

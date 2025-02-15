@@ -1,14 +1,14 @@
-import { memo, useRef } from "react";
-import { useDrag, useDrop } from "react-dnd";
+import { memo, useRef } from 'react';
+import { useDrag, useDrop } from 'react-dnd';
 
-import { TableRow } from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+import { TableRow } from '@/components/ui/table';
+import { cn } from '@/lib/utils';
 
-import TaskRowBody from "./taskRowBody";
-import { useTasks } from "../store/useTasksStore";
-import { TaskType } from "../types";
+import TaskRowBody from './taskRowBody';
+import { useTasks } from '../store/useTasksStore';
+import { TaskType } from '../types';
 
-const ITEM_TYPE = "TASK";
+const ITEM_TYPE = 'TASK';
 type TaskRowProps = TaskType & { index: number };
 
 function TaskRow({ id, status, todo, index }: TaskRowProps) {
@@ -39,17 +39,14 @@ function TaskRow({ id, status, todo, index }: TaskRowProps) {
     <TableRow
       ref={ref}
       className={cn(
-        "transition-colors cursor-grab",
-        status === "completed" && "bg-green-50 hover:bg-green-100",
-        isDragging && "opacity-50"
+        'transition-colors cursor-grab',
+        status === 'completed' && 'bg-green-50 hover:bg-green-100',
+        isDragging && 'opacity-50'
       )}
     >
       <TaskRowBody id={id} todo={todo} status={status} />
     </TableRow>
   );
-};
-
-
-
+}
 
 export default memo(TaskRow);
